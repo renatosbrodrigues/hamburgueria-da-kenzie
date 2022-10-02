@@ -67,6 +67,10 @@ function App() {
     setProductsList(filteredList);
   }
 
+  function clearCart() {
+    return setCurrentSale([]);
+  }
+
   return (
     <div className="App">
       <GlobalStyles></GlobalStyles>
@@ -84,6 +88,7 @@ function App() {
             cartTotal={cartTotal}
             setCurrentSale={setCurrentSale}
             removeItem={removeItem}
+            clearCart={clearCart}
           ></Cart>
         </CartContainer>
       </MainContainer>

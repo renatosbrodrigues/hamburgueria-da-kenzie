@@ -64,6 +64,19 @@ export const CartContainer = styled.div`
     color: var(--negative);
   }
 
+  .clearCartButton {
+    width: 100px;
+    height: 25px;
+    background-color: var(--gray-20);
+    border: 2px solid var(--gray-20);
+    border-radius: var(--base-radius);
+    color: var(--gray-50);
+    cursor: pointer;
+  }
+
+  .clearCartButton:hover {
+    color: var(--color-secondary);
+  }
   .priceContainer {
     display: flex;
     justify-content: space-between;

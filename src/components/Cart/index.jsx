@@ -1,6 +1,6 @@
 import { CartProduct } from "./CartProduct";
 
-export const Cart = ({ currentSale, cartTotal, removeItem }) => {
+export const Cart = ({ currentSale, cartTotal, removeItem, clearCart }) => {
   let totalPrice = cartTotal.reduce((prev, price) => prev + price, 0);
   return (
     <>
@@ -32,6 +32,16 @@ export const Cart = ({ currentSale, cartTotal, removeItem }) => {
       <div className="priceContainer">
         <p>Total</p>
         <span>R$ {Number(totalPrice).toFixed(2)}</span>
+
+        <button
+          type="button"
+          onClick={() => {
+            clearCart();
+          }}
+          className="clearCartButton"
+        >
+          Remover Todos
+        </button>
       </div>
     </>
   );
