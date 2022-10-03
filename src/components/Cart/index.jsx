@@ -1,7 +1,7 @@
 import { CartProduct } from "./CartProduct";
 
 export const Cart = ({ currentSale, cartTotal, removeItem, clearCart }) => {
-  let totalPrice = cartTotal.reduce((prev, price) => prev + price, 0);
+  const totalPrice = cartTotal.reduce((prev, price) => prev + price, 0);
   return (
     <>
       <h2>Carrinho de Compras</h2>

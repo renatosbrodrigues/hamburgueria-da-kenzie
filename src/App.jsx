@@ -21,8 +21,8 @@ function App() {
       .then((res) => setProductsList(res));
   }, []);
 
-  function notify() {
-    toast.error("voce ja adicionou este item!", {
+  function notify(text) {
+    toast.error(text, {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -37,9 +37,9 @@ function App() {
     const found = currentSale.find((item) => item.id === id);
 
     if (found) {
-      return notify();
+      return notify("voce ja adicionou este item!");
     } else {
-      let product = productsList.find((product) => product.id === id);
+      const product = productsList.find((product) => product.id === id);
 
       setCartTotal([...cartTotal, product.price]);
 
@@ -48,11 +48,11 @@ function App() {
   }
 
   function removeItem(name) {
-    let filteredlist = currentSale.filter((product) => product.name !== name);
+    const filteredlist = currentSale.filter((product) => product.name !== name);
 
     setCurrentSale(filteredlist);
 
-    let filteredPrices = filteredlist.map((product) => {
+    const filteredPrices = filteredlist.map((product) => {
       return product.price;
     });
 
@@ -64,7 +64,11 @@ function App() {
       (product) => product.name.toLowerCase() === name.toLowerCase()
     );
 
-    setProductsList(filteredList);
+    if (filteredList.length > 0) {
+      setProductsList(filteredList);
+    } else {
+      notify(`nao foi encontrado nenhum ${name}!`);
+    }
   }
 
   function clearCart() {
